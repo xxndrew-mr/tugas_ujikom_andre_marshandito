@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Fill In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Formulir Pendaftaran</h2>
+
+    <form>
+        
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda">
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Alamat</label>
+            <input type="text" class="form-control" id="address" placeholder="Masukkan alamat Anda">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Jenis Kelamin</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="male" value="Laki-laki">
+                <label class="form-check-label" for="male">Laki-laki</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="female" value="Perempuan">
+                <label class="form-check-label" for="female">Perempuan</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="job" class="form-label">Pekerjaan</label>
+            <select class="form-select" id="job">
+                <option selected>Pilih pekerjaan...</option>
+                <option value="1">Mahasiswa</option>
+                <option value="2">Karyawan</option>
+                <option value="3">Wirausaha</option>
+                <option value="4">Lainnya</option>
+            </select>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="terms">
+            <label class="form-check-label" for="terms">Saya setuju dengan syarat & ketentuan</label>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Pesan/Komentar</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="Tulis pesan Anda di sini"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Kirim</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
