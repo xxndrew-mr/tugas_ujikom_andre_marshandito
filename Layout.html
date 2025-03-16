@@ -6,7 +6,7 @@
     <title>Layout WEB</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Agar seluruh halaman menggunakan flexbox */
+        /* Body dan Wrapper */
         html, body {
             height: 100%;
             margin: 0;
@@ -14,33 +14,65 @@
             flex-direction: column;
         }
 
-        /* Kontainer utama agar footer tetap di bawah */
         .wrapper {
             flex: 1;
             display: flex;
             flex-direction: column;
         }
 
-        /* Sidebar dan Content */
-        .main-content {
-            flex: 1;
-            display: flex;
-        }
-
-        /* Sidebar tetap pada tinggi penuh */
+        /* Sidebar (Bisa slide/toggle) */
         .sidebar {
             width: 250px;
-            background-color: #f8f9fa;
+            background-color: #343a40;
+            color: white;
             padding: 15px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease-in-out;
         }
 
-        /* Content akan mengambil sisa ruang */
-        .content {
+        .sidebar.hide {
+            transform: translateX(-100%);
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        /* Content yang bisa bergeser saat sidebar tampil */
+        .main-content {
             flex-grow: 1;
+            margin-left: 250px;
+            transition: margin-left 0.3s ease-in-out;
             padding: 20px;
         }
 
-        /* Footer tetap di bawah */
+        .main-content.full {
+            margin-left: 0;
+        }
+
+        /* Toggle button */
+        .toggle-btn {
+            position: fixed;
+            left: 15px;
+            top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Footer */
         footer {
             background-color: #343a40;
             color: white;
@@ -51,43 +83,52 @@
 </head>
 <body>
 
+<!-- Tombol Toggle Sidebar -->
+<button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+
 <div class="wrapper">
    
-    <header class="bg-primary text-white text-center py-3">
-        <h1>My Website</h1>
-    </header>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <h5>Menu</h5>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">🏠 Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">📰 News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">ℹ About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">📞 Contact</a>
+            </li>
+        </ul>
+    </nav>
 
-   
-    <div class="main-content">
-        <nav class="sidebar">
-            <h5>Menu</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </nav>
-
-        <main class="content">
-            <h2>Welcome to My Website</h2>
-            <p>Halo, Tugas Pelatihan Ujikom</p>
-        </main>
-    </div>
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <h2>Welcome to My Website</h2>
+        <p>Halo, Tugas Pelatihan Ujikom</p>
+    </main>
 </div>
 
+<!-- Footer -->
 <footer>
-    <p>&copy; Andre</p>
+    <p>&copy; 2025 Andre</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        
+        sidebar.classList.toggle("hide");
+        mainContent.classList.toggle("full");
+    }
+</script>
+
 </body>
 </html>
